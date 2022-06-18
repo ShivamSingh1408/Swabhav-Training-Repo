@@ -1,5 +1,7 @@
 package com.aurionpro.test;
 
+import java.util.Arrays;
+
 public class Commandline {
 
 	public static void main(String[] args) {
@@ -25,6 +27,7 @@ public class Commandline {
 		System.out.println("Minimum :" + min);
 		System.out.println("Maximum :" + max);
 		// median
+		Arrays.sort(args);
 		if (n % 2 == 0)
 			System.out.println("Median :" + (Integer.parseInt(args[m]) + (Integer.parseInt(args[m - 1]))) / 2);
 		else
