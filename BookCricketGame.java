@@ -29,7 +29,7 @@ public class BookCricketGame {
 			System.out.print("Enter Player 2 Name : ");
 			String player2 = sc.next();
 			System.out.println("Player :" + player1);
-			while (point != 0) {
+			while (point != 0 && round1 < 12) {
 				System.out.print("Enter 1 to open Book :");
 				int key = sc.nextInt();
 				if (key == 1) {
@@ -51,7 +51,7 @@ public class BookCricketGame {
 			System.out.println("Player :" + player2);
 			point++;
 			int temp = round1;
-			while (point != 0 && temp != 0 && score1 > score2) {
+			while (point != 0 && temp != 0 && score1 > score2 && round2 < 12) {
 				System.out.print("Enter 1 to open Book :");
 				int key = sc.nextInt();
 				if (key == 1) {
