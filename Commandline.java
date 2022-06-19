@@ -4,49 +4,80 @@ import java.util.Arrays;
 
 public class Commandline {
 
-	public static void main(String[] args) {
+	public static void main(String args[]) {
+		int[] arr = new int[args.length];
+		for (int i = 0; i < arr.length; i++) {
+			arr[i] = Integer.parseInt(args[i]);
+		}
+		int size = arr.length;
+		sum(args);
+		average(args);
+		minMax(args);
+		median(arr);
+		Frequency(arr, size);
+	}
+
+	static void sum(String args[]) {
 		int sum = 0;
-		int n = args.length;
-		int m = n / 2;
-		float avg;
-		int min = Integer.parseInt(args[0]);
-		int max = Integer.parseInt(args[0]);
-		System.out.println("Calculates Sum for below Integers");
-		for (int i = 0; i < n; i++) {
-			System.out.println(args[i]);
+		for (int i = 0; i < args.length; i++) {
 			sum = sum + Integer.parseInt(args[i]);
-			if (min > Integer.parseInt(args[i]))
-				min = Integer.parseInt(args[i]);
-			if (max < Integer.parseInt(args[i]))
-				max = Integer.parseInt(args[i]);
 		}
-
-		avg = (float) sum / n;
 		System.out.println("Sum :" + sum);
-		System.out.println("Average :" + avg);
-		System.out.println("Minimum :" + min);
-		System.out.println("Maximum :" + max);
-		// median
-		Arrays.sort(args);
-		if (n % 2 == 0)
-			System.out.println("Median :" + (Integer.parseInt(args[m]) + (Integer.parseInt(args[m - 1]))) / 2);
-		else
-			System.out.println("Median :" + Integer.parseInt(args[m]));
-		// frequency of elements
-		for (int i = 0; i < n; i++) {
-			int temp = Integer.parseInt(args[i]);
-			if (temp == -1)
-				continue;
-			int count = 1;
-			for (int j = i + 1; j < n; j++) {
-				if (Integer.parseInt(args[j]) == temp) {
-					count++;
-					args[j] = "-1";
-				}
 
+	}
+
+	static void average(String args[]) {
+		int sum = 0;
+		float average;
+		for (int i = 0; i < args.length; i++) {
+			sum = sum + Integer.parseInt(args[i]);
+		}
+		average = (float) sum / args.length;
+		System.out.println("Average :" + average);
+
+	}
+
+	static void minMax(String args[]) {
+		int maxvalue = Integer.parseInt(args[0]);
+		int minvalue = Integer.parseInt(args[0]);
+		for (int i = 0; i < args.length; i++) {
+			if (minvalue > Integer.parseInt(args[i])) {
+				minvalue = Integer.parseInt(args[i]);
 			}
-			System.out.println("Frequency of " + temp + " is " + count);
+			if (maxvalue < Integer.parseInt(args[i])) {
+				maxvalue = Integer.parseInt(args[i]);
+			}
+		}
+
+		System.out.println("Min :" + minvalue);
+		System.out.println("Max :" + maxvalue);
+	}
+
+	static void median(int[] arr) {
+		Arrays.sort(arr);
+		if (arr.length % 2 != 0) {
+			System.out.println("Median :" + arr[arr.length / 2]);
+		} else {
+			System.out.println("Median : " + (arr[arr.length / 2] + arr[arr.length / 2 - 1]) / 2.0);
+		}
+
+	}
+
+	static void Frequency(int[] arr, int n) {
+
+		Arrays.sort(arr);
+		for (int i = 0; i < n; i++) {
+			int count = 1;
+
+			while (i < n - 1 && arr[i] == arr[i + 1]) {
+				i++;
+				count++;
+			}
+			System.out.println("Frequency of " + arr[i] + " is " + count);
+
+			count++;
 
 		}
+
 	}
 }
