@@ -8,7 +8,7 @@ public class Reflection {
 		System.out.print("\nName of the Class is : " + className.getName());
 
 		Field fields[] = className.getDeclaredFields();
-		System.out.println("\n\nList of Field of :*** " + className.getName() + " *** are :\n");
+		System.out.println("\n\nFields of :*** " + className.getName() + " *** are :\n");
 		for (Field f : fields) {
 			System.out.println("Field Name: " + f.getName());
 			System.out.println("Field Type: " + f.getType());
