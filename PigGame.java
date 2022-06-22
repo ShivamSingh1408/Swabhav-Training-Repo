@@ -9,16 +9,15 @@ public class PigGame {
 		System.out.println(
 				"* See how many turns it takes you to get to 20.\r\n" + "* Turn ends when you hold or roll a 1.\r\n"
 						+ "* If you roll a 1, you lose all points for the turn.\r\n"
-						+ "* If you hold, you save all points for the turn\r\n"
-						+ "*player with lesser turns is winner");
+						+ "* If you hold, you save all points for the turn\r\n" + "*player with lesser turns is winner");
 
 		pig();
-		
+
 	}
 
 	static void pig() {
 		int turn1 = 0;
-		int turn2 = 1;
+		int turn2 = 0;
 		int min = 1;
 		int max = 6;
 		int die = 0;
@@ -66,9 +65,11 @@ public class PigGame {
 		System.out.println(player2 + " Needs Score 20 in  " + temp + " Turns To WIN MATCH");
 		System.out.println("Player :" + player2);
 		totalScore = 0;
-		while (totalScore < 20 && turn2 <= turn1) {
-
-			System.out.println("\nTURN " + turn2);
+		while (totalScore < 20 && turn1 >= turn2) {
+			turn2++;
+			if (turn2 <= turn1) {
+				System.out.println("\nTURN " + turn2);
+			}
 			score2 = 0;
 			die = 0;
 			while (die != 1 && turn2 <= turn1) {
@@ -90,7 +91,6 @@ public class PigGame {
 				}
 
 			}
-			turn2++;
 		}
 		if (turn1 > turn2) {
 			System.out.println("\nPlayer " + player2 + " Wins the match");
