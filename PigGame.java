@@ -6,10 +6,10 @@ public class PigGame {
 
 	public static void main(String args[]) {
 
-		System.out.println(
-				"* See how many turns it takes you to get to 20.\r\n" + "* Turn ends when you hold or roll a 1.\r\n"
-						+ "* If you roll a 1, you lose all points for the turn.\r\n"
-						+ "* If you hold, you save all points for the turn\r\n" + "*player with lesser turns is winner");
+		System.out.println("* See how many turns it takes you to get to 20.\r\n"
+				+ "* Turn ends when you hold or roll a 1.\r\n"
+				+ "* If you roll a 1, you lose all points for the turn.\r\n"
+				+ "* If you hold, you save all points for the turn\r\n" + "*player with lesser turns is winner");
 
 		pig();
 
@@ -60,6 +60,7 @@ public class PigGame {
 			}
 
 		}
+		int turn1TotalScore = totalScore;
 		System.out.println("\n" + player1 + " finished in " + turn1 + " turns!");
 		int temp = turn1 - 1;
 		System.out.println(player2 + " Needs Score 20 in  " + temp + " Turns To WIN MATCH");
@@ -92,11 +93,21 @@ public class PigGame {
 
 			}
 		}
+		int turn2TotalScore = totalScore;
 		if (turn1 > turn2) {
 			System.out.println("\nPlayer " + player2 + " Wins the match");
 			System.out.println("***Game Over!!!***");
 		} else if (turn1 == turn2) {
 			System.out.println("\nTheir is Tie between " + player1 + " and " + player2);
+			System.out.println("\nWinner will be decided on the basis of Total Score");
+			if (turn1TotalScore > turn2TotalScore) {
+				System.out.println("\nPlayer " + player1 + " Wins the match");
+			} else if (turn1TotalScore < turn2TotalScore) {
+				System.out.println("\nPlayer " + player2 + " Wins the match");
+			} else {
+				System.out.println(
+						"\nTheir is Tie between " + player1 + " and " + player2 + " on the basis of Score also");
+			}
 			System.out.println("***Game Over!!!***");
 
 		} else {
@@ -108,3 +119,4 @@ public class PigGame {
 	}
 
 }
+
